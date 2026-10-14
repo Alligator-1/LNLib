@@ -322,5 +322,5 @@ namespace LNLib
 		float		minDistanceBetweenSites;
 	};
 
-	int scomp(const void* p1, const void* p2);
+	int LNLIB_EXPORT scomp(const void* p1, const void* p2);
 }

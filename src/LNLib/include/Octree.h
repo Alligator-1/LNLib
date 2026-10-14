@@ -15,7 +15,7 @@
 
 namespace LNLib
 {
-    class Octant {
+    class LNLIB_EXPORT Octant {
     public:
         std::vector<Octant*> Children;
         LNLib::XYZ Center;
@@ -28,19 +28,19 @@ namespace LNLib
     };
 
 
-    bool Inside(const LNLib::XYZ& query, double radius, Octant* octant);
-    bool Overlaps(const LNLib::XYZ& query, double radius, Octant* octant);
-    bool Contains(const LNLib::XYZ& query, double radius, Octant* octant);
+    bool LNLIB_EXPORT Inside(const LNLib::XYZ& query, double radius, Octant* octant);
+    bool LNLIB_EXPORT Overlaps(const LNLib::XYZ& query, double radius, Octant* octant);
+    bool LNLIB_EXPORT Contains(const LNLib::XYZ& query, double radius, Octant* octant);
 
 
-    Octant* OctreeConstruction(const std::vector<LNLib::XYZ>& db, int leafSize, double minExtent);
+    Octant* LNLIB_EXPORT OctreeConstruction(const std::vector<LNLib::XYZ>& db, int leafSize, double minExtent);
 
-    bool OctreeRadiusSearchFast(Octant* root, const std::vector<LNLib::XYZ>& db,
+    bool LNLIB_EXPORT OctreeRadiusSearchFast(Octant* root, const std::vector<LNLib::XYZ>& db,
         RadiusNnResultSet& resultSet, const LNLib::XYZ& query);
 
-    bool OctreeRadiusSearch(Octant* root, const std::vector<LNLib::XYZ>& db,
+    bool LNLIB_EXPORT OctreeRadiusSearch(Octant* root, const std::vector<LNLib::XYZ>& db,
         RadiusNnResultSet& resultSet, const LNLib::XYZ& query);
 
-    bool OctreeKnnSearch(Octant* root, const std::vector<LNLib::XYZ>& db,
+    bool LNLIB_EXPORT OctreeKnnSearch(Octant* root, const std::vector<LNLib::XYZ>& db,
         KnnResultSet& resultSet, const LNLib::XYZ& query);
 }

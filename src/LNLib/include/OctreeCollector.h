@@ -11,6 +11,7 @@
 #pragma once
 #include <vector>
 #include <limits>
+#include "LNLibDefinitions.h"
 
 namespace LNLib
 {
@@ -26,7 +27,7 @@ namespace LNLib
         }
     };
 
-    class KnnResultSet{
+    class LNLIB_EXPORT KnnResultSet{
     public:
         KnnResultSet(int capacity);
 
@@ -34,6 +35,9 @@ namespace LNLib
         bool Full() const;
         double WorstDist() const;
         void AddPoint(double dist, int index);
+
+        // [LNLib C API] expose results for external bindings.
+        const std::vector<DistIndex>& Results() const { return DistIndexList; }
 
     private:
         int Capacity;
@@ -43,13 +47,16 @@ namespace LNLib
         int ComparisonCounter;
     };
 
-    class RadiusNnResultSet {
+    class LNLIB_EXPORT RadiusNnResultSet {
     public:
         RadiusNnResultSet(double radius);
 
         int Size() const;
         double WorstDist() const;
         void AddPoint(double dist, int index);
+
+        // [LNLib C API] expose results for external bindings.
+        const std::vector<DistIndex>& Results() const { return DistIndexList; }
 
     private:
         double Radius;
